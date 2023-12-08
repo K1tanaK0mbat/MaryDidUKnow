@@ -15,12 +15,12 @@ var questions = [
   {
     question: "Question 1",
     answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    correctIndex: 0,
+    correctIndex: 2,
   },
   {
     question: "Question 2",
     answers: ["Answer 21", "Answer 22", "Answer 23", "Answer 24"],
-    correctIndex: 0,
+    correctIndex: 3,
   },
 
 ];
@@ -31,11 +31,13 @@ function startTimer() {
     timer = setInterval(function () {
         timerCount--;
         timerEl.textContent = timerCount;
-        if (timerCount === 0) {
+        if (timerCount <= 0 || currentQuestionIndex >= questions.length) {
             clearInterval(timer);
-        }
-    }, 1000);
-}
+            // Quiz is finished due to time running out or all questions answered
+            showAllDone(timerCount);
+          }
+        }, 1000);
+      }
 
 function startQuiz() {
     startTimer();
@@ -61,8 +63,7 @@ function startQuiz() {
       answersList.appendChild(answerItem);
     }
   }
-  
- // ... (previous code)
+
 
 function checkAnswer(selectedAnswer) {
     var currentQuestion = questions[currentQuestionIndex];
@@ -70,22 +71,21 @@ function checkAnswer(selectedAnswer) {
     var answerElements = document.querySelectorAll('#answers li');
   
     for (var i = 0; i < answerElements.length; i++) {
-      // Check if the answer is correct
+
       if (currentQuestion.answers[i] === correctAnswer) {
         answerElements[i].classList.add('correct-answer');
       }
-  
-      // Check if the answer is selected
+
       if (currentQuestion.answers[i] === selectedAnswer) {
         if (selectedAnswer === correctAnswer) {
           // Mark the selected answer as correct
           answerElements[i].classList.add('selected-correct');
           showFeedbackMessage('Correct!');
         } else {
-          // Mark the selected answer as incorrect
+
           answerElements[i].classList.add('selected-incorrect');
           showFeedbackMessage('Wrong!');
-          timerCount -= 10; // Subtract 10 seconds for incorrect answer
+          timerCount -= 10; 
         }
       }
     }
@@ -99,7 +99,7 @@ function checkAnswer(selectedAnswer) {
       }, 1000); 
     } else {
       clearInterval(timer);
-
+showFinish(timerCount);
     }
   }
   
@@ -118,3 +118,20 @@ function checkAnswer(selectedAnswer) {
     }, 1000);
   }
   
+  function showFinish(score) {
+    quizSection.innerHTML = ''; // 
+  
+    var FinishElement = document.createElement('div');
+   FinishElement.innerHTML = `
+      <h2>All done</h2>
+      <h3>Your high score is: ${score}</h3>
+      <p>Enter your name: <input type="text" id="nameInput"></p>
+      <button onclick="submitScore()">Enter</button>
+    `;
+  
+    quizSection.appendChild(FinishElement);
+  }
+  
+  function submitScore() {
+    var playerName = document.getElementById('nameInput').value;
+  }
