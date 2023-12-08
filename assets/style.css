@@ -1,0 +1,33 @@
+.startButton {
+    background-color:cornflowerblue;
+    border: solid;
+    mask-border-width: 10px;
+    border-color: black;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    margin: 10px;
+    display:inline;
+    font-size: 16px;
+}
+
+header {
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: blue;
+}
+
+#home {
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: rgb(10, 10, 47);
+}
+
+p {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 30px;
+}
