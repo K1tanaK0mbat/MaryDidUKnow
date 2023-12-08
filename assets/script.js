@@ -31,11 +31,13 @@ function startTimer() {
     timer = setInterval(function () {
         timerCount--;
         timerEl.textContent = timerCount;
-        if (timerCount === 0) {
+        if (timerCount <= 0 || currentQuestionIndex >= questions.length) {
             clearInterval(timer);
-        }
-    }, 1000);
-}
+            // Quiz is finished due to time running out or all questions answered
+            showAllDone(timerCount);
+          }
+        }, 1000);
+      }
 
 function startQuiz() {
     startTimer();
