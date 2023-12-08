@@ -1,7 +1,7 @@
 .startButton {
     background-color:cornflowerblue;
     border: solid;
-    mask-border-width: 10px;
+    border-width: 5px;
     border-color: black;
     color: rgb(255, 255, 255);
     padding: 15px 32px;
@@ -30,4 +30,8 @@ p {
 
 h3 {
     font-size: 30px;
+}
+
+#quiz {
+    display: none;
 }
