@@ -9,9 +9,8 @@ startButton.addEventListener("click", startQuiz);
 
 var timer;
 var timerCount;
-var questions=[];
+var questions;
 var currentQuestionIndex;
-
 
 
 function startTimer() {
@@ -44,10 +43,10 @@ function startQuiz() {
   ];
     document.getElementById('home').style.display = 'none';
     document.getElementById('scoreboard').style.display = 'none';
-    
     quizSection.style.display = 'block';
     startTimer();
     setTimeout(function () {
+     
       showQuestion();
     }, 500);
   };
@@ -195,3 +194,4 @@ function ViewScores() {
   
   Scoreboard();
 }
+
