@@ -3,8 +3,8 @@ var startButton = document.querySelector('.startButton');
 var quizSection = document.getElementById('quiz');
 var questionEl = document.getElementById('question');
 var answersList = document.getElementById('answers');
-var home = document.getElementById('homeButton');
-var  view = document.getElementById('ViewScore');
+var homeEl = document.getElementById('homeButton');
+var view = document.getElementById('viewScore');
 startButton.addEventListener("click", startQuiz);
 
 var timer;
@@ -40,13 +40,15 @@ function startTimer() {
       }
 
 function startQuiz() {
+  currentQuestionIndex = 0;
     startTimer();
-    startButton.style.display = 'none';
     document.getElementById('home').style.display = 'none';
-    document.getElementById('score').style.display = 'block'; 
+    document.getElementById('scoreboard').style.display = 'none';
     quizSection.style.display = 'block';
-    showQuestion();
-  }
+    setTimeout(function () {
+      showQuestion();
+    }, 500);
+  };
   
 
   function showQuestion() {
@@ -119,7 +121,7 @@ showFinish(timerCount);
   }
   
   function showFinish(score) {
-    quizSection.innerHTML = ''; // 
+    quizSection.innerHTML = ''; 
   
     var FinishElement = document.createElement('div');
    FinishElement.innerHTML = `
@@ -135,7 +137,7 @@ showFinish(timerCount);
   function submitScore() {
     var playerName = document.getElementById('nameInput').value;
 
-    var saveScores = JSON.parse(localStorage.getItem('scores')) || [];
+    var saveScores = JSON.parse(localStorage.getItem('saveScores')) || [];
   
 
     saveScores.push({ name: playerName, score: timerCount });
@@ -147,7 +149,7 @@ showFinish(timerCount);
   }
   
   function Scoreboard() {
-    var scoreboard = document.getElementById('scoreboard');
+    var scoreboardEl = document.getElementById('scoreboard');
     var scoreList = document.getElementById('scoreList');
     scoreList.innerHTML = ''; 
   
@@ -163,13 +165,19 @@ showFinish(timerCount);
     });
   
 
-    scoreboard.style.display = 'block';
+    scoreboardEl.style.display = 'block';
   }
   
-  home.addEventListener('click', goHome);
+  homeEl.addEventListener('click', goHome);
  function goHome () {
+  clearInterval(timer); 
+  timerCount = 0; 
+  currentQuestionIndex = 0; 
+
   document.getElementById('scoreboard').style.display = 'none';
-  document.getElementById('home').style.display = 'block';
+  document.getElementById('home').style.display = 'block'; 
+
+  
  };
 
 view.addEventListener('click', ViewScores);
@@ -177,5 +185,7 @@ view.addEventListener('click', ViewScores);
 function ViewScores() {
   document.getElementById('scoreboard').style.display = 'block';
   document.getElementById('home').style.display = 'none';
+
+  
   Scoreboard();
 }
