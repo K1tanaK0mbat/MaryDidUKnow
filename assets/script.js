@@ -54,12 +54,14 @@ function startQuiz() {
 
   function showQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
+    questionEl.classList.add('question');
     questionEl.textContent = currentQuestion.question;
     answersList.innerHTML = '';
   
     for (var i = 0; i < currentQuestion.answers.length; i++) {
       var answerItem = document.createElement('li');
       answerItem.textContent = currentQuestion.answers[i];
+      answerItem.classList.add('answers'); 
       answerItem.addEventListener('click', function (event) {
         checkAnswer(event.target.textContent);
       });
@@ -129,7 +131,7 @@ showFinish(timerCount);
       <h2>All done</h2>
       <h3>Your high score is: ${score}</h3>
       <p>Enter your name: <input type="text" id="nameInput"></p>
-      <button onclick="submitScore()">Enter</button>
+      <button class="Button" onclick="submitScore()">Enter</button>
     `;
   
     quizSection.appendChild(FinishElement);
