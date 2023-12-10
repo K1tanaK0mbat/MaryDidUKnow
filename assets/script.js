@@ -5,6 +5,8 @@ var questionEl = document.getElementById('question');
 var answersList = document.getElementById('answers');
 var homeEl = document.getElementById('homeButton');
 var view = document.getElementById('viewScore');
+var clearEl = document.getElementById('clearScore');
+
 startButton.addEventListener("click", startQuiz);
 
 var timer;
@@ -195,3 +197,9 @@ function ViewScores() {
   Scoreboard();
 }
 
+clearEl.addEventListener('click', clearScores);
+
+function clearScores() {
+  localStorage.removeItem('saveScores');
+  Scoreboard();
+}
