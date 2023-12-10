@@ -1,5 +1,5 @@
 var timerEl = document.querySelector('.time');
-var startButton = document.querySelector('.startButton');
+var startButton = document.getElementById('startButton');
 var quizSection = document.getElementById('quiz');
 var questionEl = document.getElementById('question');
 var answersList = document.getElementById('answers');
