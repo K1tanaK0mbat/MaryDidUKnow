@@ -3,8 +3,8 @@ var startButton = document.querySelector('.startButton');
 var quizSection = document.getElementById('quiz');
 var questionEl = document.getElementById('question');
 var answersList = document.getElementById('answers');
-
-
+var home = document.getElementById('homeButton');
+var  view = document.getElementById('ViewScore');
 startButton.addEventListener("click", startQuiz);
 
 var timer;
@@ -33,7 +33,7 @@ function startTimer() {
         timerEl.textContent = timerCount;
         if (timerCount <= 0 || currentQuestionIndex >= questions.length) {
             clearInterval(timer);
-            // Quiz is finished due to time running out or all questions answered
+          
             showAllDone(timerCount);
           }
         }, 1000);
@@ -43,7 +43,7 @@ function startQuiz() {
     startTimer();
     startButton.style.display = 'none';
     document.getElementById('home').style.display = 'none';
-    document.getElementById('score').style.display = 'block'; // Show the score element
+    document.getElementById('score').style.display = 'block'; 
     quizSection.style.display = 'block';
     showQuestion();
   }
@@ -166,3 +166,16 @@ showFinish(timerCount);
     scoreboard.style.display = 'block';
   }
   
+  home.addEventListener('click', goHome);
+ function goHome () {
+  document.getElementById('scoreboard').style.display = 'none';
+  document.getElementById('home').style.display = 'block';
+ };
+
+view.addEventListener('click', ViewScores);
+
+function ViewScores() {
+  document.getElementById('scoreboard').style.display = 'block';
+  document.getElementById('home').style.display = 'none';
+  Scoreboard();
+}
