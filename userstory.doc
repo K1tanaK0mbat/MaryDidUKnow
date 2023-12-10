@@ -7,4 +7,4 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 
-(for scoreboard section add homepage button, view scores button needs to show scoreboard)
+(=need clear highscore button on scoreboard)

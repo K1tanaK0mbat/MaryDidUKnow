@@ -9,7 +9,7 @@ startButton.addEventListener("click", startQuiz);
 
 var timer;
 var timerCount;
-var questions;
+var questions=[];
 var currentQuestionIndex;
 
 
@@ -22,7 +22,7 @@ function startTimer() {
         if (timerCount <= 0 || currentQuestionIndex >= questions.length) {
             clearInterval(timer);
           
-            showAllDone(timerCount);
+            showFinish(timerCount);
           }
         }, 1000);
       }
@@ -44,6 +44,7 @@ function startQuiz() {
   ];
     document.getElementById('home').style.display = 'none';
     document.getElementById('scoreboard').style.display = 'none';
+    
     quizSection.style.display = 'block';
     startTimer();
     setTimeout(function () {
@@ -133,6 +134,7 @@ showFinish(timerCount);
     `;
   
     quizSection.appendChild(FinishElement);
+    document.getElementById('time-block').style.display = 'none';
   }
   
   function submitScore() {
@@ -156,6 +158,7 @@ showFinish(timerCount);
   
     document.getElementById('quiz').style.display = 'none';
     document.getElementById('home').style.display = 'none';
+    document.getElementById('time-block').style.display = 'none';
     
     var saveScores = JSON.parse(localStorage.getItem('saveScores')) || [];
   
