@@ -5,11 +5,24 @@ var questionEl = document.getElementById('question');
 var answersList = document.getElementById('answers');
 var homeEl = document.getElementById('homeButton');
 var view = document.getElementById('viewScore');
+var clearEl = document.getElementById('clearScore');
+var questions = [
+  {
+    question: "Question 1",
+    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    correctIndex: 2,
+  },
+  {
+    question: "Question 2",
+    answers: ["Answer 21", "Answer 22", "Answer 23", "Answer 24"],
+    correctIndex: 3,
+  },
+];
+
 startButton.addEventListener("click", startQuiz);
 
 var timer;
 var timerCount;
-var questions;
 var currentQuestionIndex;
 
 
@@ -28,19 +41,6 @@ function startTimer() {
 
 function startQuiz() {
   currentQuestionIndex = 0;
-  questions = [
-    {
-      question: "Question 1",
-      answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-      correctIndex: 2,
-    },
-    {
-      question: "Question 2",
-      answers: ["Answer 21", "Answer 22", "Answer 23", "Answer 24"],
-      correctIndex: 3,
-    },
-  
-  ];
     document.getElementById('home').style.display = 'none';
     document.getElementById('scoreboard').style.display = 'none';
     quizSection.style.display = 'block';
@@ -180,8 +180,7 @@ showFinish(timerCount);
 
   document.getElementById('scoreboard').style.display = 'none';
   document.getElementById('home').style.display = 'block'; 
-  
-
+  location.reload();
   
  };
 
@@ -195,3 +194,9 @@ function ViewScores() {
   Scoreboard();
 }
 
+clearEl.addEventListener('click', clearScores);
+
+function clearScores() {
+  localStorage.removeItem('saveScores');
+  Scoreboard();
+}
