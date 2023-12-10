@@ -3,8 +3,8 @@ var startButton = document.querySelector('.startButton');
 var quizSection = document.getElementById('quiz');
 var questionEl = document.getElementById('question');
 var answersList = document.getElementById('answers');
-
-
+var homeEl = document.getElementById('homeButton');
+var view = document.getElementById('viewScore');
 startButton.addEventListener("click", startQuiz);
 
 var timer;
@@ -33,20 +33,22 @@ function startTimer() {
         timerEl.textContent = timerCount;
         if (timerCount <= 0 || currentQuestionIndex >= questions.length) {
             clearInterval(timer);
-            // Quiz is finished due to time running out or all questions answered
+          
             showAllDone(timerCount);
           }
         }, 1000);
       }
 
 function startQuiz() {
+  currentQuestionIndex = 0;
     startTimer();
-    startButton.style.display = 'none';
     document.getElementById('home').style.display = 'none';
-    document.getElementById('score').style.display = 'block'; // Show the score element
+    document.getElementById('scoreboard').style.display = 'none';
     quizSection.style.display = 'block';
-    showQuestion();
-  }
+    setTimeout(function () {
+      showQuestion();
+    }, 500);
+  };
   
 
   function showQuestion() {
@@ -119,7 +121,7 @@ showFinish(timerCount);
   }
   
   function showFinish(score) {
-    quizSection.innerHTML = ''; // 
+    quizSection.innerHTML = ''; 
   
     var FinishElement = document.createElement('div');
    FinishElement.innerHTML = `
@@ -135,7 +137,7 @@ showFinish(timerCount);
   function submitScore() {
     var playerName = document.getElementById('nameInput').value;
 
-    var saveScores = JSON.parse(localStorage.getItem('scores')) || [];
+    var saveScores = JSON.parse(localStorage.getItem('saveScores')) || [];
   
 
     saveScores.push({ name: playerName, score: timerCount });
@@ -147,7 +149,7 @@ showFinish(timerCount);
   }
   
   function Scoreboard() {
-    var scoreboard = document.getElementById('scoreboard');
+    var scoreboardEl = document.getElementById('scoreboard');
     var scoreList = document.getElementById('scoreList');
     scoreList.innerHTML = ''; 
   
@@ -163,6 +165,27 @@ showFinish(timerCount);
     });
   
 
-    scoreboard.style.display = 'block';
+    scoreboardEl.style.display = 'block';
   }
   
+  homeEl.addEventListener('click', goHome);
+ function goHome () {
+  clearInterval(timer); 
+  timerCount = 0; 
+  currentQuestionIndex = 0; 
+
+  document.getElementById('scoreboard').style.display = 'none';
+  document.getElementById('home').style.display = 'block'; 
+
+  
+ };
+
+view.addEventListener('click', ViewScores);
+
+function ViewScores() {
+  document.getElementById('scoreboard').style.display = 'block';
+  document.getElementById('home').style.display = 'none';
+
+  
+  Scoreboard();
+}
