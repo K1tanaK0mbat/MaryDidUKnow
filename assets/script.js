@@ -134,4 +134,35 @@ showFinish(timerCount);
   
   function submitScore() {
     var playerName = document.getElementById('nameInput').value;
+
+    var saveScores = JSON.parse(localStorage.getItem('scores')) || [];
+  
+
+    saveScores.push({ name: playerName, score: timerCount });
+
+    localStorage.setItem('saveScores', JSON.stringify(saveScores));
+  
+
+    Scoreboard();
   }
+  
+  function Scoreboard() {
+    var scoreboard = document.getElementById('scoreboard');
+    var scoreList = document.getElementById('scoreList');
+    scoreList.innerHTML = ''; 
+  
+    document.getElementById('quiz').style.display = 'none';
+    document.getElementById('home').style.display = 'none';
+    
+    var saveScores = JSON.parse(localStorage.getItem('saveScores')) || [];
+  
+    saveScores.forEach(function (entry, index) {
+      var listItem = document.createElement('li');
+      listItem.textContent = `${index + 1}. ${entry.name}: ${entry.score}`;
+      scoreList.appendChild(listItem);
+    });
+  
+
+    scoreboard.style.display = 'block';
+  }
+  
