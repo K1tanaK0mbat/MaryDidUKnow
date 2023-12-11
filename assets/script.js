@@ -117,6 +117,7 @@ showFinish(timerCount);
   function showFeedbackMessage(message) {
     var feedbackElement = document.createElement('p');
     feedbackElement.textContent = message;
+    feedbackElement.classList.add('feedback-message');
     document.getElementById('quiz').appendChild(feedbackElement);
     setTimeout(function () {
       feedbackElement.remove();
