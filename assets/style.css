@@ -1,8 +1,6 @@
-.startButton {
-    background-color:cornflowerblue;
-    border: solid;
-    border-width: 5px;
-    border-color: black;
+.Button {
+    background-color:rgb(69, 34, 133);
+    border-radius: 10px;
     color: rgb(255, 255, 255);
     padding: 15px 32px;
     margin: 10px;
@@ -10,15 +8,13 @@
     font-size: 16px;
 }
 
-header {
-    padding: 30px;
+#quiz {
+    padding:100px;
     text-align: center;
-    font-size: 35px;
-    color: blue;
 }
 
 #home {
-    padding: 30px;
+    padding:100px;
     text-align: center;
     font-size: 35px;
     color: rgb(10, 10, 47);
@@ -32,6 +28,56 @@ h3 {
     font-size: 30px;
 }
 
-#quiz {
-    display: none;
+
+#time-block {
+    color:rgb(161, 97, 222);
+    font-size:20px;
+    float:right;
+    margin-bottom: 20px;
+}
+
+#viewScore {
+    float:left;
+    margin-bottom: 20px;
+}
+
+.answers {
+    background-color:rgb(69, 34, 133);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    padding: 15px 32px;
+    margin: 10px;
+    font-size: 25px;
+}
+
+.answers:hover,
+.answers:active {
+    background-color:rgb(161, 97, 222);
+}
+
+.question {
+    font-size: 40px;
+}
+
+.feedback-message {
+    font-size:26px;
+    font-style: italic;
+    margin-top:30px;
+    border-top-style: solid;
+    color:lightslategrey;
+    
+}
+
+.scores {
+    list-style:none;
+    font-size: 20px;
+    left:20px;
+}
+
+
+
+#scoreboard {
+    margin:30px;
+    padding:45px;
+    text-align: center;
 }

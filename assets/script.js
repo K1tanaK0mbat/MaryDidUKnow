@@ -54,12 +54,14 @@ function startQuiz() {
 
   function showQuestion() {
     var currentQuestion = questions[currentQuestionIndex];
+    questionEl.classList.add('question');
     questionEl.textContent = currentQuestion.question;
     answersList.innerHTML = '';
   
     for (var i = 0; i < currentQuestion.answers.length; i++) {
       var answerItem = document.createElement('li');
       answerItem.textContent = currentQuestion.answers[i];
+      answerItem.classList.add('answers'); 
       answerItem.addEventListener('click', function (event) {
         checkAnswer(event.target.textContent);
       });
@@ -115,6 +117,7 @@ showFinish(timerCount);
   function showFeedbackMessage(message) {
     var feedbackElement = document.createElement('p');
     feedbackElement.textContent = message;
+    feedbackElement.classList.add('feedback-message');
     document.getElementById('quiz').appendChild(feedbackElement);
     setTimeout(function () {
       feedbackElement.remove();
@@ -129,7 +132,7 @@ showFinish(timerCount);
       <h2>All done</h2>
       <h3>Your high score is: ${score}</h3>
       <p>Enter your name: <input type="text" id="nameInput"></p>
-      <button onclick="submitScore()">Enter</button>
+      <button class="Button" onclick="submitScore()">Enter</button>
     `;
   
     quizSection.appendChild(FinishElement);
@@ -163,12 +166,13 @@ showFinish(timerCount);
   
     saveScores.forEach(function (entry, index) {
       var listItem = document.createElement('li');
+      listItem.classList.add('scores');
       listItem.textContent = `${index + 1}. ${entry.name}: ${entry.score}`;
       scoreList.appendChild(listItem);
     });
   
 
-    scoreboardEl.style.display = 'block';
+    scoreboardEl.style.display = 'inline-block';
   }
   
   homeEl.addEventListener('click', goHome);
