@@ -8,15 +8,45 @@ var view = document.getElementById('viewScore');
 var clearEl = document.getElementById('clearScore');
 var questions = [
   {
-    question: "Question 1",
-    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    question: "Which is the correct way to declare a variable's value?",
+    answers: ["let toy;", "var toy;", "let toy ='Gift';", "var toy= Gift"],
     correctIndex: 2,
   },
   {
-    question: "Question 2",
-    answers: ["Answer 21", "Answer 22", "Answer 23", "Answer 24"],
+    question: "What is a Boolean expression?",
+    answers: ["A link", "An equation", "If/else statement", "True or false statement"],
     correctIndex: 3,
   },
+  {
+    question: "Which browser interaction requires a typed response from users?",
+    answers: ["Modal", "Prompt", "Alert", "Confirm"],
+    correctIndex: 1,
+  },
+  {
+    question: "In this function, what kind of variable is being declared: function showCat () { let title = 'New Kittens'; alert(title); }",
+    answers: ["Local", "Global", "Boolean", "Static"],
+    correctIndex: 0,
+  },
+  {
+    question: "Why are stict equalities better than regular equalities?",
+    answers: ["They look nicer", "They're easier to write", "They check for exact equality and have less room for error ", "They convert and change values to match as much as possible"],
+    correctIndex: 2,
+  },
+  {
+    question: "Which do you use to fetch an element by its class name?",
+    answers: ["document.querySelector()", "getElementbyID()", "getChildren()", "getParent()"],
+    correctIndex: 0,
+  },
+  {
+    question: "const Starts = 'Venus', 'Serena', 'Hercules', 'Casopia']; What is this an example of?",
+    answers: ["string", "bolean", "function", "array"],
+    correctIndex: 3,
+  },
+  {
+    question: "A single execution of a while loop function is called ____",
+    answers: ["switch", "iteration", "value", "output"],
+    correctIndex: 1,
+  }
 ];
 
 startButton.addEventListener("click", startQuiz);
