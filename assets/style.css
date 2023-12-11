@@ -67,3 +67,17 @@ h3 {
     color:lightslategrey;
     
 }
+
+.scores {
+    list-style:none;
+    font-size: 20px;
+    left:20px;
+}
+
+
+
+#scoreboard {
+    margin:30px;
+    padding:45px;
+    text-align: center;
+}

@@ -166,12 +166,13 @@ showFinish(timerCount);
   
     saveScores.forEach(function (entry, index) {
       var listItem = document.createElement('li');
+      listItem.classList.add('scores');
       listItem.textContent = `${index + 1}. ${entry.name}: ${entry.score}`;
       scoreList.appendChild(listItem);
     });
   
 
-    scoreboardEl.style.display = 'block';
+    scoreboardEl.style.display = 'inline-block';
   }
   
   homeEl.addEventListener('click', goHome);
